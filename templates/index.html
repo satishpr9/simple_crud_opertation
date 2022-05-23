@@ -1,0 +1,90 @@
+
+{% extends "base/base.html" %}
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    
+    {% block body %}
+    <!-- Background image -->
+  <div class="container">
+  <div
+    class="p-5 text-center bg-image"
+    style="
+      background-image: url('https://bizimages.withfloats.com/tile/59fdaf391ed0000af8311ad8.jpg');
+      height: 400px;
+    "
+  >
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="text-white">
+          <h1 class="mb-3">Heading</h1>
+          <h4 class="mb-3">Subheading</h4>
+          <a class="btn btn-outline-light btn-lg" href="#!" role="button"
+          >Call to action</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- Background image -->
+
+   <div class="container mt-2">
+  <ul style="display:flex;">
+    {% if obj %}
+      {% for k in obj %}
+      {% if forloop.counter < 7 %}
+        <a href="/?category={{k.id}}" class="btn btn-outline-info" style="margin: auto;">{{ k.name  }}</a>
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      <li>Sorry, no athletes in this list.</li>
+    {% endif %}
+  </ul>
+
+</div>
+
+
+
+<!--row column-->
+
+
+
+
+<div class="container-sm">
+  
+  <div class="row">
+    {% for k in obj1 %}
+    <div class="col-4 mt-1">
+      <a class="ripple" href="#!">
+        <img
+          alt="example"
+          class="img-fluid hover-shadow "
+          src="{{ k.image.url }}"
+        />
+      </a>
+    </div>
+    {% endfor%}
+  </div>
+  
+
+</div>
+
+
+{% endblock %}
+
+  
+
+
+</html>
+

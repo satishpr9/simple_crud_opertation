@@ -1,0 +1,59 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block body %}
+
+
+
+<div class="container mt-3">
+
+    <div class="row">
+     
+		<div class="col-lg-3 mx-auto">
+			<div class="list-group">
+
+				<a href="/" class="list-group-item list-group-item-action">All Products</a>
+
+				{% for category in obj %}
+				<a href="category?category={{category.id}} "
+					class="list-group-item list-group-item-action">{{category.name}}</a>
+				{% endfor %}
+			</div>
+		</div>
+
+
+
+        {% for in in obj1 %}
+        <div class="col-3 mt-2 mx-auto">
+            <div class="row mx-auto">
+                
+            <div class="card" style="width:250px">
+                <img class="card-img-top" src="{{in.image.url}}" alt="Card image" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title">Rs-{{in.price}}</h4>
+                    <p class="card-text"></p>
+                    <div  style="display:flex;" >
+                    <a href="{% url 'paynow' %}"  class="btn btn-primary" style="font-size: 10px;">Buy Now</a>
+                    <br>
+                    {% if user.is_authenticated %}
+                    <a href="{%  url 'delete' in.id %}" class="btn btn-secondary-sm" style="font-size: 10px;">Delete</a>
+                {% endif %}
+                </div>
+                </div>
+                
+            </div>
+            
+           </div>
+        </div>
+        {% endfor %}
+
+        <br>
+    </div>
+
+</div>
+
+
+
+
+{% endblock body %}
